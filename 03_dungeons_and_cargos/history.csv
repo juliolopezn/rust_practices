@@ -1,4 +1,4 @@
-TIPO; TAG; TEXTO; VIDA
+﻿TIPO; TAG; TEXTO; VIDA
 SITUACION; INICIO; Eres un aventurero novato y estás a punto de entrar en una oscura y profunda cueva llena de Goblins malignos.; 0
 OPCION; ENTRADA; Entrar y comenzar la aventura;
 SITUACION; ENTRADA; Esta muy oscuro y no se ve nada. Te preguntas si existe alguna manera de hacer las cosas más fáciles...;

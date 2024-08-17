@@ -1,0 +1,7 @@
+{
+    "rust-analyzer.linkedProjects": [
+        "${workspaceFolder}/01_first_steps/Cargo.toml",
+        "${workspaceFolder}/02_calc/Cargo.toml",
+        "${workspaceFolder}/03_dungeons_and_cargos/Cargo.toml"
+    ]
+}
