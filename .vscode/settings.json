@@ -1,7 +1,13 @@
 {
+    // "rust-analyzer.check.command": "clippy",
     "rust-analyzer.linkedProjects": [
         "${workspaceFolder}/01_first_steps/Cargo.toml",
         "${workspaceFolder}/02_calc/Cargo.toml",
-        "${workspaceFolder}/03_dungeons_and_cargos/Cargo.toml"
+        "${workspaceFolder}/03_dungeons_and_cargos/Cargo.toml",
+        "${workspaceFolder}/04_string_slices/Cargo.toml",
+        "${workspaceFolder}/05_circle_struct/Cargo.toml",
+        "${workspaceFolder}/06_fn_closures/Cargo.toml",
+        "${workspaceFolder}/07_ownerships/Cargo.toml",
+        "${workspaceFolder}/08_raiis/Cargo.toml",
     ]
 }

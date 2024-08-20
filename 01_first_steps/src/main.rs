@@ -125,3 +125,52 @@ fn user_data() {
         }
     }
 }
+
+#[test]
+fn user_roles() {
+    enum PermissionLevel {
+        None,
+        Employee,
+        Admin,
+    }
+    
+    impl PermissionLevel {
+        fn description(&self) -> &str {
+            match self {
+                PermissionLevel::None => "No permissions",
+                PermissionLevel::Employee => "I'm employee",
+                PermissionLevel::Admin => "I'm admin",
+            }
+        }
+
+        fn is_admin(&self) -> bool {
+            match self {
+                PermissionLevel::Admin => true,
+                _ => false,
+            }
+        }
+
+        fn is_employee(&self) -> bool {
+            if let PermissionLevel::Employee = self {
+                true
+            } else {
+                false
+            }
+        }
+    }
+
+    let none = PermissionLevel::None;
+    println!("None: {}", none.description());
+    println!("Am I employee?: {}", none.is_employee());
+    println!("Am I admin: {}\n", none.is_admin());
+
+    let employee = PermissionLevel::Employee;
+    println!("Employee: {}", employee.description());
+    println!("Am I employee?: {}", employee.is_employee());
+    println!("Am I admin: {}\n", employee.is_admin());
+
+    let admin = PermissionLevel::Admin;
+    println!("Admin: {}", admin.description());
+    println!("Am I employee?: {}", admin.is_employee());
+    println!("Am I admin: {}\n", admin.is_admin());
+}
