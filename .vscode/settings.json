@@ -9,5 +9,10 @@
         "${workspaceFolder}/06_fn_closures/Cargo.toml",
         "${workspaceFolder}/07_ownerships/Cargo.toml",
         "${workspaceFolder}/08_raiis/Cargo.toml",
+        "${workspaceFolder}/09_rc_pointer/Cargo.toml",
+        "${workspaceFolder}/10_lifetime/Cargo.toml",
+        "${workspaceFolder}/11_oop/Cargo.toml",
+        "${workspaceFolder}/12_polymorphism/Cargo.toml",
+        "${workspaceFolder}/13_operator_overload/Cargo.toml",
     ]
 }
