@@ -24,10 +24,18 @@ fn read_file_content(path: &str) -> Result<String, Error> {
     };
 
     let mut string_buffer = String::new();
-    let file_content = match file.read_to_string(&mut string_buffer) {
+    let file_content_result = match file.read_to_string(&mut string_buffer) {
         Ok(_) => Ok(string_buffer),
         Err(error) => Err(error),
     };
 
-    file_content
+    file_content_result
+}
+
+fn _read_file_content_with_question_mark(path: &str) -> Result<String, Error> {
+    let mut string_buffer = String::new();
+    
+    File::open(path)?.read_to_string(&mut string_buffer)?;
+
+    Ok(string_buffer)
 }
