@@ -1,7 +1,18 @@
-use std::{fs::File, io::{ErrorKind, Read}};
+use std::{fs::File, io::{Error, ErrorKind, Read}};
 
 fn main() {
     let path = "./file.txt";
+
+    let file_content = match read_file_content(path) {
+        Ok(content) => content,
+        Err(error) => panic!("Problem reading the file: {:?}", error),
+    };
+
+    println!("File content:");
+    println!("{}", file_content);
+}
+
+fn read_file_content(path: &str) -> Result<String, Error> {
     let file_result = File::open(path);
 
     let mut file = match file_result {
@@ -12,12 +23,11 @@ fn main() {
         },
     };
 
-    let mut file_content = String::new();
-    match file.read_to_string(&mut file_content) {
-        Ok(_) => {},
-        Err(error) => panic!("Problem reading the file: {:?}", error),
-    }
+    let mut string_buffer = String::new();
+    let file_content = match file.read_to_string(&mut string_buffer) {
+        Ok(_) => Ok(string_buffer),
+        Err(error) => Err(error),
+    };
 
-    println!("File content:");
-    println!("{}", file_content);
+    file_content
 }
