@@ -15,5 +15,6 @@
         "${workspaceFolder}/12_polymorphism/Cargo.toml",
         "${workspaceFolder}/13_operator_overload/Cargo.toml",
         "${workspaceFolder}/14_result_pattern/Cargo.toml",
+        "${workspaceFolder}/15_project_file_parser/Cargo.toml",
     ]
 }
