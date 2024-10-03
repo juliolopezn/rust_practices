@@ -17,5 +17,6 @@
         "${workspaceFolder}/14_result_pattern/Cargo.toml",
         "${workspaceFolder}/15_project_file_parser/Cargo.toml",
         "${workspaceFolder}/16_project_rendezvous_hash/Cargo.toml",
+        "${workspaceFolder}/17_blog/Cargo.toml",
     ]
 }
