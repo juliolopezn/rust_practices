@@ -1,13 +1,14 @@
 use std::io::{stdin, Read};
 
-use blog::establish_connection;
+use blog::get_pool_connection;
 use blog::models::{NewPost, Post};
 use blog::schema::posts::dsl::posts;
 use diesel::associations::HasTable;
 use diesel::prelude::*;
 
 fn main() {
-    let conn = &mut establish_connection();
+    let pool = get_pool_connection();
+    let conn: &mut _ = &mut pool.get().expect("Couldn't get db connection from pool");
 
     let mut title = String::new();
     let mut body = String::new();

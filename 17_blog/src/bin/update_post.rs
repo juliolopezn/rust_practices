@@ -1,6 +1,6 @@
 use std::io::{stdin, Read};
 
-use blog::establish_connection;
+use blog::get_pool_connection;
 use blog::models::{NewPost, Post};
 use blog::schema::posts::dsl;
 use blog::schema::posts::dsl::posts;
@@ -8,7 +8,8 @@ use diesel::prelude::*;
 use uuid::Uuid;
 
 fn main() {
-    let connection = &mut establish_connection();
+    let pool = get_pool_connection();
+    let conn: &mut _ = &mut pool.get().expect("Couldn't get db connection from pool");
 
     let mut page: u32 = 1;
     let page_size: u32 = 5;
@@ -24,7 +25,7 @@ fn main() {
             .limit(limit as i64)
             .offset(offset as i64)
             .select(Post::as_select())
-            .load(connection)
+            .load(conn)
             .expect("Error loading posts");
 
         match results.is_empty() {
@@ -65,7 +66,6 @@ fn main() {
                     slug: &slug::slugify(title),
                 };
 
-                let conn = &mut establish_connection();
                 let post = diesel::update(posts.find(post_id))
                     .filter(dsl::id.eq(post_id))
                     .set((dsl::title.eq(new_post.title), dsl::body.eq(new_post.body)))
