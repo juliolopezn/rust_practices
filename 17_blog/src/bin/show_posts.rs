@@ -1,14 +1,13 @@
-use blog::get_pool_connection;
-use blog::models::Post;
-use blog::schema::posts::dsl::posts;
 use chrono::Utc;
 use diesel::prelude::*;
 
-fn main() {
-    use blog::schema::posts::dsl::created_at;
+use blog::db::get_connection;
+use blog::models::post::Post;
+use blog::schema::posts::dsl::created_at;
+use blog::schema::posts::dsl::posts;
 
-    let pool = get_pool_connection();
-    let conn= &mut pool.get().expect("Couldn't get db connection from pool");
+fn main() {
+    let conn: &mut _ = &mut get_connection();
 
     let results = posts
         .filter(created_at.le(Utc::now().naive_utc()))

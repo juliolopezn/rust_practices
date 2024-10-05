@@ -1,20 +1,19 @@
-use std::io::{stdin, Read};
-
-use blog::get_pool_connection;
-use blog::models::{NewPost, Post};
-use blog::schema::posts::dsl;
-use blog::schema::posts::dsl::posts;
 use diesel::prelude::*;
+use std::io::{stdin, Read};
 use uuid::Uuid;
 
+use blog::db::get_connection;
+use blog::models::post::{NewPost, Post};
+use blog::schema::posts::dsl;
+use blog::schema::posts::dsl::posts;
+
 fn main() {
-    let pool = get_pool_connection();
-    let conn: &mut _ = &mut pool.get().expect("Couldn't get db connection from pool");
+    let conn: &mut _ = &mut get_connection();
 
     let mut page: u32 = 1;
     let page_size: u32 = 5;
 
-    let mut post_ids: Vec<Uuid> = vec![]; 
+    let mut post_ids: Vec<Uuid> = vec![];
 
     println!("Choose post to update [ENTER to load more, {EOF} to exit]");
     loop {

@@ -1,6 +1,6 @@
 use chrono::NaiveDateTime;
 use diesel::prelude::*;
-use serde::Serialize;
+use serde::{Deserialize, Serialize};
 use uuid::Uuid;
 
 #[derive(Queryable, Selectable, Debug, Clone)]
@@ -18,6 +18,7 @@ pub struct Post {
 #[derive(Insertable)]
 #[diesel(table_name = crate::schema::posts)]
 #[diesel(check_for_backend(diesel::pg::Pg))]
+#[derive(Deserialize)]
 pub struct NewPost<'a> {
     pub title: &'a str,
     pub body: &'a str,
